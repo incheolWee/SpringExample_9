@@ -1,13 +1,13 @@
 package net.javaguides.springmvc.service;
 
-import java.util.List;
-
+import net.javaguides.springmvc.entity.Customer;
 import net.javaguides.springmvc.exception.ResourceNotFoundException;
 import net.javaguides.springmvc.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import net.javaguides.springmvc.entity.Customer;
+
+import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -31,7 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional
     public Customer getCustomer(int id) throws ResourceNotFoundException {
         return customerRepository.findById(id).orElseThrow(
-                () - > new ResourceNotFoundException(id));
+                () -> new ResourceNotFoundException(id));
     }
 
     @Override
