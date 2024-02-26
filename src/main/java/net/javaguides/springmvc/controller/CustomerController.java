@@ -1,8 +1,8 @@
 package net.javaguides.springmvc.controller;
 
 
-import jdk.javadoc.internal.doclets.toolkit.util.ResourceIOException;
 import net.javaguides.springmvc.entity.Customer;
+import net.javaguides.springmvc.exception.ResourceNotFoundException;
 import net.javaguides.springmvc.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,14 +45,15 @@ public class CustomerController {
     }
 
     @GetMapping("/updateForm")
-    public String showFormForUpdate(@RequestParam("customerId") int theId, Model theModel) throws ResourceIOException{
+    public String showFormForUpdate(@RequestParam("customerId") int theId,
+                                    Model theModel) throws ResourceNotFoundException {
         Customer theCustomer = customerService.getCustomer(theId);
-        theModel.addAttribute("customer",theCustomer);
+        theModel.addAttribute("customer", theCustomer);
         return "customer-form";
     }
 
     @GetMapping("/delete")
-    public String deleteCustomer(@RequestParam("customerId") int theId) throws ResourceIOException{
+    public String deleteCustomer(@RequestParam("customerId") int theId) throws ResourceNotFoundException {
         customerService.deleteCustomer(theId);
         return "redirect:/customer/list";
     }
