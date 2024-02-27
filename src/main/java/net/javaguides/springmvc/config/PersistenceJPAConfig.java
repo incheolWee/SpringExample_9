@@ -36,6 +36,7 @@ public class PersistenceJPAConfig {
         super();
     }
 
+    //JPA설정하는 부분
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
         final LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
