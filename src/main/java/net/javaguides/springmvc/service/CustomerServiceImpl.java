@@ -17,7 +17,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public List<Customer> getCustomers() {
+    public List < Customer > getCustomers() {
         return customerRepository.findAll();
     }
 
@@ -39,6 +39,4 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomer(int theId) {
         customerRepository.deleteById(theId);
     }
-
 }
-

@@ -1,11 +1,10 @@
 package net.javaguides.springmvc.controller;
 
-
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
 import net.javaguides.springmvc.entity.Customer;
 import net.javaguides.springmvc.exception.ResourceNotFoundException;
 import net.javaguides.springmvc.service.CustomerService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,30 +15,29 @@ import java.util.List;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
+
     private static final Logger LOG = LoggerFactory.getLogger(CustomerController.class);
 
     @Autowired
     private CustomerService customerService;
 
     @GetMapping("/list")
-    public String listCustomers(Model theModel){
+    public String listCustomers(Model theModel) {
         List<Customer> theCustomers = customerService.getCustomers();
         theModel.addAttribute("customers", theCustomers);
-
-        return  "list-customers";
+        return "list-customers";
     }
 
     @GetMapping("/showForm")
-    public String showFormForAdd(Model theModel){
+    public String showFormForAdd(Model theModel) {
         LOG.debug("inside show customer-form handler method");
         Customer theCustomer = new Customer();
         theModel.addAttribute("customer", theCustomer);
-
         return "customer-form";
     }
 
     @PostMapping("/saveCustomer")
-    public String saveCustomer(@ModelAttribute("customer") Customer theCustomer){
+    public String saveCustomer(@ModelAttribute("customer") Customer theCustomer) {
         customerService.saveCustomer(theCustomer);
         return "redirect:/customer/list";
     }

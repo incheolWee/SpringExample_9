@@ -16,8 +16,8 @@
 <body>
 <div class="container">
     <div class="col-md-offset-2 col-md-7">
-        <h3 class="text-center">Spring MVC 5 + Spring Data JPA 2 + JSP + MySQL
-            Example - Customer Management</h3>
+        <h2 class="text-center">Spring MVC 5 + Hibernate 5 + JSP + MySQL
+            Example</h2>
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">Add Customer</div>
@@ -30,15 +30,15 @@
                     <form:hidden path="id" />
 
                     <div class="form-group">
-                        <label for="firstname" class="col-md-3 control-label">First
-                            Name</label>
+                            <%--@declare id="firstname"--%><label for="firstname" class="col-md-3 control-label">First
+                        Name</label>
                         <div class="col-md-9">
                             <form:input path="firstName" cssClass="form-control" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="lastname" class="col-md-3 control-label">Last
-                            Name</label>
+                            <%--@declare id="lastname"--%><label for="lastname" class="col-md-3 control-label">Last
+                        Name</label>
                         <div class="col-md-9">
                             <form:input path="lastName" cssClass="form-control" />
                         </div>
