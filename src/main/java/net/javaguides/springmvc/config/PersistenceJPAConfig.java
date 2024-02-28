@@ -44,14 +44,14 @@ public class PersistenceJPAConfig {
         entityManagerFactoryBean.setPackagesToScan(new String[]{
                 "net.javaguides.springmvc.entity"
         });
-        final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter(); //JPA사용하기 위해서 hibernate 추가
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
         entityManagerFactoryBean.setJpaProperties(additionalProperties());
 
         return entityManagerFactoryBean;
     }
 
-    final Properties additionalProperties(){
+    final Properties additionalProperties(){  //Properties는 Hashmap의 구버전인 Hash tabel을 상속받아서 만들어진것,  (String, String ) 형태로 저장하는 보다 단순화된 컬렉션 클래스이다.
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect",env.getProperty("hibernate.dialect"));
